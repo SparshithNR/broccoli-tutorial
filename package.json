@@ -1,14 +1,16 @@
 {
   "name": "broccoli-tutorial",
   "version": "1.0.0",
-  "description": "Project to explaing how broccoli echo system works",
+  "description": "Project explaing how broccoli echo system works",
   "main": "index.js",
   "author": "SNRAI",
   "license": "MIT",
   "scripts": {
     "build": "yarn broccoli build",
     "serve": "yarn broccoli serve",
-    "test": "yarn mocha tests/"
+    "test1": "yarn mocha tests/unit-test.js",
+    "test2": "yarn mocha tests/with-link-tag-test.js",
+    "test": "yarn test1 && yarn test2"
   },
   "dependencies": {
     "broccoli": "^3.5.2",

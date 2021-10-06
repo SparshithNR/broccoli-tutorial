@@ -1,5 +1,5 @@
-import ComplirePlugin from './plugins/complier-plugin';
+import CompilerPlugin from './plugins/compiler-plugin';
 
-export default () => new ComplirePlugin(['app'], {
+export default () => new CompilerPlugin(['app'], {
   destDir: 'dist'
 });

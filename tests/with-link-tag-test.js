@@ -2,7 +2,7 @@ const { createBuilder, createTempDir } = require('broccoli-test-helper');
 const { expect } = require('chai');
 const CompilerPlugin = require('../plugins/complier-plugin');
 
-describe('CompilerPlugin', function () {
+describe('CompilerPlugin with Link Tag', function () {
     it('should build', async function () {
       const input = await createTempDir();
       try {
@@ -29,21 +29,19 @@ describe('CompilerPlugin', function () {
           input.write({
             'template.li':
 `- head
-    this is a head`
+    this is a head
+- link
+    app.css`
           });
           await output.build();
 
-          expect(output.changes(), 'should change index.html').to.deep.equal({
+          expect(output.changes()).to.deep.equal({
             'index.html': 'change',
-          });
-          expect(output.read(), 'should have updated content').to.deep.equal({
-            'index.html': '<!DOCTYPE html><html><head>this is a head</head><body></body></html>',
+          }, 'should change index.html');
+          expect(output.read(), 'should have updated content with link tag').to.deep.equal({
+            'index.html': '<!DOCTYPE html><html><head>this is a head<link rel="stylesheet" href="app.css"></head><body></body></html>',
           });
 
-          // no change
-          await output.build();
-
-          expect(output.changes(), 'should not change anything').to.deep.equal({});
         } finally {
           await output.dispose();
         }
