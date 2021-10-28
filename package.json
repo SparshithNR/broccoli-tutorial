@@ -13,12 +13,12 @@
     "test": "yarn test1 && yarn test2"
   },
   "dependencies": {
-    "broccoli": "^3.5.2",
     "broccoli-plugin": "^4.0.7",
     "jsdom": "^17.0.0",
     "qunit": "^2.17.2"
   },
   "devDependencies": {
+    "broccoli": "^3.5.2",
     "broccoli-cli": "^1.0.0",
     "broccoli-test-helper": "^2.0.0",
     "chai": "^4.3.4",
